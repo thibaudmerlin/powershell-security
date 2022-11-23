@@ -40,9 +40,6 @@ function Get-ETypeDefinition
             If([int]($msDSSupportedEncryptionTypes -band [int]$_) -ne 0){
                 $ETypes[[int]$_]
             }
-            ElseIf($msDSSupportedEncryptionTypes -eq 0){
-                $ETypes[0]
-            }
             Else {
                 $Types = "Not Set"
             }
@@ -173,11 +170,11 @@ $users= [String[]]$users
 $gMSAs= [String[]]$gMSAs
 <# 
 [string]$split = @($computers)# -join "," #>
-$computers.GetType().FullName
+<# $computers.GetType().FullName
 $computers[0].GetType().FullName
 $computers[1].GetType().FullName
 $computers[2].GetType().FullName
-$computers[3].GetType().FullName
+$computers[3].GetType().FullName #>
 Write-Host "Computers:"
 <# write-output $computers
 write-output $users
