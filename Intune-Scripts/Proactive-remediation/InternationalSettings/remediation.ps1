@@ -27,16 +27,12 @@ Param (
 
 # Set Variables
 $RegKeyFullPaths = @("HKCU:\Control Panel\International")
-$sDecimalSeparator = '.'
-$sGroupSeparator = ','
-$RegKeysDecimalValue = (get-itemproperty $RegKeyFullPaths -name 'sDecimal').sDecimal
-$RegKeysGroupValue = (get-itemproperty $RegKeyFullPaths -name 'sThousand').sThousand
+$sShortDateFormat = 'dd/MM/yyyy'
 
 Try {
 
-    Write-Verbose 'Updating Decimal Symbol Separator to Dot...'
-    Set-itemproperty $RegKeyFullPaths -name 'sDecimal' -value '.'
-    Set-itemproperty $RegKeyFullPaths -name 'sThousand' -value "'"
+    Write-Verbose 'Updating Short Date Format to dd/MM/yyyy...'
+    Set-itemproperty $RegKeyFullPaths -name 'sDecimal' -value $sShortDateFormat
 }
 
 Catch {

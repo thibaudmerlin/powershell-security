@@ -27,28 +27,20 @@ Param (
 
 # Set Variables
 $RegKeyFullPaths = @("HKCU:\Control Panel\International")
-$sDecimalSeparator = '.'
-$sGroupSeparator = ','
-$RegKeysDecimalValue = (get-itemproperty $RegKeyFullPaths -name 'sDecimal').sDecimal
-$RegKeysGroupValue = (get-itemproperty $RegKeyFullPaths -name 'sThousand').sThousand
+$sShortDateFormat = 'dd/MM/yyyy'
+$RegKeysShortDateValue = (get-itemproperty $RegKeyFullPaths -name 'sShortDate').sShortDate
 
 Try {
 
-    If ($RegKeysDecimalValue -eq ',') {
-        Write-host 'Decimal symbol is incorrect. Remediation required.'
-        Write-Verbose 'Decimal symbol is incorrect. Remediation required.'
-        Exit 1
-
-    }
-    ElseIf ($RegKeysGroupValue -eq ',' -OR $RegKeysGroupValue -eq ' ') {
-        Write-host 'Decimal group is incorrect. Remediation required.'
-        Write-Verbose 'Decimal group is incorrect. Remediation required.'
+    If ($RegKeysShortDateValue -cne $sShortDateFormat) {
+        Write-host 'Short Date Format is incorrect. Remediation required.'
+        Write-Verbose 'Short Date Formatis incorrect. Remediation required.'
         Exit 1
 
     }
     Else { 
-        write-host 'Decimal symbol and group are correct. No remediation required.'
-        Write-Verbose 'Decimal symbol and group are correct. No remediation required.'
+        write-host 'Short Date Format is correct. No remediation required.'
+        Write-Verbose 'Short Date Format is correct. No remediation required.'
         Exit 0
         
     }
