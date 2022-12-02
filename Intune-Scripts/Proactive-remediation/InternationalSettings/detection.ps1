@@ -27,7 +27,7 @@ Param (
 
 # Set Variables
 $RegKeyFullPaths = @("HKCU:\Control Panel\International")
-$sShortDateFormat = 'dd/MM/yyyy'
+$sShortDateFormat = 'dd.MM.yyyy'
 $RegKeysShortDateValue = (get-itemproperty $RegKeyFullPaths -name 'sShortDate').sShortDate
 
 Try {

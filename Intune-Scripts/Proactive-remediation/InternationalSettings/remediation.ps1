@@ -27,11 +27,11 @@ Param (
 
 # Set Variables
 $RegKeyFullPaths = @("HKCU:\Control Panel\International")
-$sShortDateFormat = 'dd/MM/yyyy'
+$sShortDateFormat = 'dd.MM.yyyy'
 
 Try {
 
-    Write-Verbose 'Updating Short Date Format to dd/MM/yyyy...'
+    Write-Verbose 'Updating Short Date Format to dd.MM.yyyy...'
     Set-itemproperty $RegKeyFullPaths -name 'sDecimal' -value $sShortDateFormat
 }
 
