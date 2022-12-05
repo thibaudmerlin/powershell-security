@@ -1,10 +1,10 @@
 <#
 
 .SYNOPSIS
-    PowerShell script to detect the International Settings.
+    PowerShell script to detect the Push Notification Setting Enabled.
 
 .EXAMPLE
-    .\UAT-Win10-01-Detect-CplIntSettings.ps1
+    .\UAT-Win10-01-Detect-ToastEnabled.ps1
 
 .DESCRIPTION
     This PowerShell script is deployed as a detection script using Proactive Remediations in Microsoft Endpoint Manager/Intune.
@@ -14,7 +14,7 @@
 
 .NOTES
     Version:        1.0
-    Creation Date:  November 30, 2022
+    Creation Date:  December 05, 2022
     Author:         Thibaud Merlin
 
 #>

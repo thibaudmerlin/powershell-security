@@ -39,6 +39,6 @@ Catch {
 
     $ErrorMessage = $_.Exception.Message 
     Write-Warning $ErrorMessage
-    Exit 1
+    Exit 0
 
 }
