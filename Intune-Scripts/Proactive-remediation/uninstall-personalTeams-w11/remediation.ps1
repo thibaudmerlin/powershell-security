@@ -11,7 +11,7 @@ try
     #Kill msteams process
     If (Get-Process msteams -ErrorAction SilentlyContinue) {
         Try {
-            Stop-Process msteams -Force
+            Stop-Process -Name msteams -Force
         }
         catch {
             Write-Output "Might be issues - Continue anyway..."
