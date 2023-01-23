@@ -40,7 +40,9 @@ $DataCollectionKey1 = "DisableEnterpriseAuthProxy"
 $DataCollectionValue1 = 1
 $WATPKey1 = <to Be replaced>
 $WATPKey2 = "OnboardingInfo"
+$WATPKey3 = "latency"
 [string]$WATPValue2 = <to Be replaced>
+$WATPValue3 = "Demo"
 $WATPServiceName = "SENSE"
 $WATPStatusPath = @("HKLM:\SOFTWARE\Microsoft\Windows Advanced Threat Protection\Status")
 $WATPStatusKey = "OnboardingState"
@@ -69,6 +71,13 @@ if (!(Test-Path -Path $logPath)) {
 Start-Transcript -Path $logFile -Force
 #endregion
 #region script
+$WATPKey3Value = get-itemproperty $WATPPoliciesPath -name $WATPKey3 -ErrorAction Ignore
+If ($WATPKey2Value) {
+    Write-Host "The Key $WATPKey3 exist"
+}
+Else {
+    New-ItemProperty -Path $WATPPoliciesPath -Name $WATPKey3 -PropertyType string -Value $WATPValue3 -Force
+}
 $WMIKeyValue1 = get-itemproperty $WMIRegPath -name $WMIKey1 -ErrorAction Ignore
 If ($WMIKeyValue1) {
     Write-Host "The Key $WMIKey1 exist"
