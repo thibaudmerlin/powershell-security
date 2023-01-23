@@ -26,12 +26,22 @@ Param (
 )
 
 # Set Variables
+$client = "Company"
+$logPath = "$ENV:ProgramData\$client\Logs"
+$logFile = "$logPath\WATPDetection.log"
+
 $ServiceName = "SENSE"
 $RegKeyFullPaths = @("HKLM:\SOFTWARE\Microsoft\Windows Advanced Threat Protection\Status")
 $DefenderOnboardingKey = "OnboardingState"
 $OnboardingStateValue = 1
 $RegKeyDefenderValue = (get-itemproperty $RegKeyFullPaths -name $DefenderOnboardingKey -ErrorAction Ignore).OnboardingState
-
+#region logging
+if (!(Test-Path -Path $logPath)) {
+    New-Item -Path $logPath -ItemType Directory -Force
+}
+Start-Transcript -Path $logFile -Force
+#endregion
+#region detection
 Try {
     $Service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     If ($null -eq $Service) {
@@ -69,3 +79,5 @@ Catch {
     Exit 1
 
 }
+Stop-Transcript
+#endregion
